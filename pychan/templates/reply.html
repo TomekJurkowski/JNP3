@@ -16,11 +16,11 @@
                     <input type="hidden" name="username" value="{{ user.username }}">
 
                         <div class="form-group">
-                            Message: {{ form.reply_body }}
+                            Message:<br> {{ form.reply_body }}
                         </div>
                         <div class="form-group">
-                            {{ form.image }}
-                            <input class="btn-success btn-large" type="submit" value="Submit"/>
+                            {{ form.image }}<br>
+                            <input class="btn-success" type="submit" value="Submit"/>
                         </div>
                     </div>
                 </form>
@@ -31,6 +31,7 @@
                 email: <b>{{ p.author_email }}</b>
                 Post ID: <b>{{ p.post_id }}</b>
                     <br>
+
                 <img src="{{ MEDIA_URL }}{{ p.image }}"> {{ p.post_body }}
                 <hr>
                 {% for reply_posts in r %}
@@ -38,7 +39,10 @@
                     email: <b>{{ reply_posts.reply_email }}</b>
                     Reply ID: <b>{{ reply_posts.reply_id }}</b>
                     <br>
-                    <img src="{{ MEDIA_URL }}{{ reply_posts.image }}"> {{ reply_posts.reply_body }}
+{#                    {%if  reply_posts.image > "" %}#}
+                    <img src="{{ MEDIA_URL }}{{ reply_posts.image }}">
+{#                    {% endif %}#}
+                    {{ reply_posts.reply_body }}
                     <hr>
                 {% endfor %}
             </td>

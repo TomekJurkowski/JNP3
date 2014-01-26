@@ -10,7 +10,6 @@ from django.http import HttpResponseRedirect
 from django.db.models import Max
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from registration.models import User
-
 def GetLastGet():
     global_id = GlobalId.objects.all().aggregate(Max('global_id'))
     if global_id['global_id__max'] is None:
@@ -80,6 +79,7 @@ def ShowReplyForm(request):
         param = request.GET.get('to', '')
         p = Post.objects.get(post_id=param)
         r = Reply.objects.filter(op_post_id=param)
+        print r.first().image > ""
         return render_to_response('reply.html', {
             'param' : param,
             'form' : form,
