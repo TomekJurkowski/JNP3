@@ -63,8 +63,9 @@ def ShowReplyForm(request):
         if form.is_valid():
             g_id = GetLastGet()
             g_id += 1
-            reply_name = form.cleaned_data['reply_name']
-            reply_email = form.cleaned_data['reply_email']
+            username = request.POST["username"]
+            reply_name = username
+            reply_email = User.objects.get(username=username).email
             reply_body = form.cleaned_data['reply_body']
             image = form.cleaned_data['image']
             p = Reply(reply_id=g_id, op_post_id=param, reply_name=reply_name, reply_email=reply_email,
@@ -79,7 +80,6 @@ def ShowReplyForm(request):
         param = request.GET.get('to', '')
         p = Post.objects.get(post_id=param)
         r = Reply.objects.filter(op_post_id=param)
-        print r.first().image > ""
         return render_to_response('reply.html', {
             'param' : param,
             'form' : form,

@@ -12,4 +12,4 @@ class PostForm(ModelForm):
 class ReplyForm(ModelForm):
     class Meta:
         model = Reply
-        fields = ('reply_name', 'reply_email', 'reply_body', 'image')
+        fields = ('reply_body', 'image')
