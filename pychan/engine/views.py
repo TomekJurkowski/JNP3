@@ -10,9 +10,10 @@ from django.http import HttpResponseRedirect
 from django.db.models import Max
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+
 def GetLastGet():
     global_id = GlobalId.objects.all().aggregate(Max('global_id'))
-    if global_id['global_id__max'] == None:
+    if global_id['global_id__max'] is None:
         return 1
     else:
         return global_id['global_id__max']
@@ -33,9 +34,9 @@ def ShowPostForm(request):
             post_body = form.cleaned_data['post_body']
             image = form.cleaned_data['image']
             p = Post(post_id=g_id, author_name=author_name, author_email=author_email, post_subject=post_subject,
-                post_body=post_body, image=image)
+                     post_body=post_body, image=image)
             p.save()
-            gid = GlobalId(global_id = g_id)
+            gid = GlobalId(global_id=g_id)
             gid.save()
             return HttpResponseRedirect('')
     else:
@@ -50,10 +51,11 @@ def ShowPostForm(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
     return render_to_response('b.html', {
-        'form' : form,
-        'post_list' : post_list,
-        'posts' : posts,
+        'form': form,
+        'post_list': post_list,
+        'posts': posts,
     }, context_instance=RequestContext(request))
+
 
 def ShowReplyForm(request):
     if request.method == 'POST':
@@ -69,10 +71,10 @@ def ShowReplyForm(request):
             reply_email = form.cleaned_data['reply_email']
             reply_body = form.cleaned_data['reply_body']
             image = form.cleaned_data['image']
-            p = Reply(reply_id=g_id, op_post_id = param, reply_name=reply_name, reply_email=reply_email,
-                reply_body=reply_body, image=image)
+            p = Reply(reply_id=g_id, op_post_id=param, reply_name=reply_name, reply_email=reply_email,
+                      reply_body=reply_body, image=image)
             p.save()
-            gid = GlobalId(global_id = g_id)
+            gid = GlobalId(global_id=g_id)
             gid.save()
             return HttpResponseRedirect('')
 

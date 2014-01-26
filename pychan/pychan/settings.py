@@ -11,12 +11,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'db/database.sqlite3',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'db/database.sqlite3',  # Or path to database file if using sqlite3.
+        'USER': '',  # Not used with sqlite3.
+        'PASSWORD': '',  # Not used with sqlite3.
+        'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',  # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -78,7 +78,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -88,7 +88,7 @@ SECRET_KEY = '8o-jjsim)i)r@6$^igp7!unprva#s4wab$ira4)0^dhk$4*ilc'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #     'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -133,8 +133,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
-    'social.apps.django_app.context_processors.backends',
-    'social.apps.django_app.context_processors.login_redirect',
 )
 
 INSTALLED_APPS = (
@@ -150,15 +148,14 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'engine',
     'registration',
-    'social.apps.django_app.default',  # python-social-auth
 )
 ACCOUNT_ACTIVATION_DAYS = 30
 LOGIN_REDIRECT_URL = '/'
 
-EMAIL_HOST='poczta.o2.pl'
-EMAIL_PORT= 587
-EMAIL_HOST_USER='mimchan'
-EMAIL_HOST_PASSWORD='mimchan'
+EMAIL_HOST = 'poczta.o2.pl'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'mimchan'
+EMAIL_HOST_PASSWORD = 'mimchan'
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
