@@ -84,7 +84,7 @@ def ShowReplyForm(request):
         param = request.GET.get('to', '')
         p = Post.objects.get(post_id=param)
         r = Reply.objects.filter(op_post_id=param)
-        print r.first().image > ""
+        #print r.first().image > ""
         return render_to_response('reply.html', {
             'param': param,
             'form': form,

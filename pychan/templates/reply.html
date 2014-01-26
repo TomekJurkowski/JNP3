@@ -11,7 +11,7 @@
             <td id="rightcolumn">
                  {% if user.is_authenticated %}
                 <form enctype="multipart/form-data" action="reply?to={{ param }}" method="POST">
-                    <div class="control-group text-center">
+                    <div class="control-group">
                         {% csrf_token %}
                     <input type="hidden" name="username" value="{{ user.username }}">
 
