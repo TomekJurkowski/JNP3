@@ -2,6 +2,13 @@
 {% load i18n %}
 
 {% block content %}
+{#   <div>#}
+{##}
+{#    <a href="{% url 'social:begin' 'facebook' %}"><img src="/static/connect_facebook.jpg'" /></a>#}
+{#</div>#}
+
+
+
 <form method="post" action=".">
   {% csrf_token %}
   {{ form.as_p }}
