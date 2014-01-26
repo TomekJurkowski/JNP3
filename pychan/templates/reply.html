@@ -9,13 +9,11 @@
                 <a href="/">/b/ - random</a>
             </td>
             <td id="rightcolumn">
+                 {% if user.is_authenticated %}
                 <form enctype="multipart/form-data" action="reply?to={{ param }}" method="POST">
                     {% csrf_token %}
                     <p id="text-to-center">
-                        Name: {{ form.reply_name }}
-                        <br>
-                        e-mail: {{ form.reply_email }}
-                        <br>
+                    <input type="hidden" name="username" value="{{ user.username }}">
                         Message:
                         <br>
                         {{ form.reply_body }}
@@ -24,8 +22,9 @@
                         <input type="submit" value="Submit"/>
                     </p>
                 </form>
+                {% endif %}
                 <hr>
-                Имя: <b>{{ p.post_subject }}</b> email: {{ p.author_name }} Тред: <b>№{{ p.post_id }}</b>
+               Name: <b>{{ p.post_subject }}</b> email: {{ p.author_name }} <b>№{{ p.post_id }}</b>
                     <br>
                 <img src="{{ MEDIA_URL }}{{ p.image }}"> {{ p.post_body }}
                 <hr>

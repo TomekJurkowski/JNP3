@@ -9,15 +9,17 @@
                 <a href="/">/b/ - random</a>
             </td>
             <td id="rightcolumn">
+
+               {% if user.is_authenticated %}
                 <form class="form-horizontal" enctype="multipart/form-data" action="" method="POST">
                 <div class="control-group">
                     {% csrf_token %}
                     <p id="text-to-center">
-                    Name: {{ form.author_name }}
                     <br>
-                    e-mail: {{ form.author_email }}
-                    <br>
-                    Subject: {{ form.post_subject }}
+                    <input type="hidden" name="username" value="{{ user.username }}">
+                    Subject:
+                     <br>
+                        {{ form.post_subject }}
                     <br>
                     Message:
                     <br>
@@ -28,6 +30,8 @@
                     </p>
                  </div>
                 </form>
+
+            {% endif %}
                 <hr>
                 <div id="rules-to-center" align=”center”>
                     <b>Rules</b>

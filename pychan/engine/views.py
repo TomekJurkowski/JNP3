@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.db.models import Max
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from registration.models import User
 
 def GetLastGet():
     global_id = GlobalId.objects.all().aggregate(Max('global_id'))
@@ -23,16 +23,19 @@ def GetLastGet():
 def ShowPostForm(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
+        print "dup0a"
         if form.is_valid():
+            print "dupa"
             g_id = GetLastGet()
             g_id += 1
-            author_name = form.cleaned_data['author_name']
-            author_email = form.cleaned_data['author_email']
+            username = request.POST["username"]
+            author_name = username
+            author_email = User.objects.get(username=username).email
             post_subject = form.cleaned_data['post_subject']
             post_body = form.cleaned_data['post_body']
             image = form.cleaned_data['image']
             p = Post(post_id=g_id, author_name=author_name, author_email=author_email, post_subject=post_subject,
-                     post_body=post_body, image=image)
+                      post_body=post_body, image=image)
             p.save()
             gid = GlobalId(global_id=g_id)
             gid.save()

@@ -6,7 +6,8 @@ from engine.models import Post, Reply
 class PostForm(ModelForm):
     class Meta:
         model = Post
-        fields = ('author_name', 'author_email', 'post_subject', 'post_body', 'image')
+
+        fields = ( 'post_subject', 'post_body', 'image')
 
 class ReplyForm(ModelForm):
     class Meta:
