@@ -41,7 +41,7 @@ def ShowPostForm(request):
     else:
         form = PostForm()
     post_list = Post.objects.all()
-    paginator = Paginator(post_list, 5)
+    paginator = Paginator(post_list.reverse(), 5)
     page = request.GET.get('page')
     try:
         posts = paginator.page(page)

@@ -35,13 +35,35 @@
                 </a>
                 <!-- Be sure to leave the brand out there if you want it shown -->
                 <a class="brand"  href="/">MIMchan</a>
+
                 <ul class="nav">
                     <li>
                         <a href="/b/">Random</a>
                     </li>
 
+                        {% if user.is_superuser %}
+                            <li>
+                            <a href="/admin/">Admin Panel</a>
+                            </li>
+                        {% endif %}
 
-
+                        {% if user.is_authenticated %}
+                            <li>
+                            <a>Logged in: {{ user.username }}</a>
+                            </li>
+                            <li>
+                            </li>
+                            <li>
+                                <a href="/accounts/logout/">Wyloguj się</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'auth_password_change' %}">Zmień hasło</a>
+                            </li>
+                        {% else %}
+                            <li>
+                            <a href="/accounts/login/">Zaloguj się</a>
+                            </li>
+                        {% endif %}
                 </ul>
                 <!-- Everything you want hidden at 940px or less, place within here -->
                 <div class="nav-collapse collapse">

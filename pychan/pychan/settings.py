@@ -113,6 +113,30 @@ TEMPLATE_DIRS = (
     'templates',
 )
 
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     'django.core.context_processors.request',
+#     'django.contrib.auth.context_processors.auth',
+#     'django.core.context_processors.debug',
+#     'django.core.context_processors.i18n',
+#     'django.core.context_processors.request',
+#     'django.core.context_processors.static',
+#     'django.contrib.messages.context_processors.messages',
+# )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.csrf',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.request',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,7 +149,21 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
     'engine',
+    'registration',
+    'social.apps.django_app.default',  # python-social-auth
 )
+ACCOUNT_ACTIVATION_DAYS = 30
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_HOST='poczta.o2.pl'
+EMAIL_PORT= 587
+EMAIL_HOST_USER='mimchan'
+EMAIL_HOST_PASSWORD='mimchan'
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DEFAULT_FROM_EMAIL = 'mimchan@o2.pl'
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
