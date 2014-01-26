@@ -39,7 +39,7 @@
                 <hr>
                 {% for post_yoba in posts %}
                     <b>{{ post_yoba.post_subject }}</b> {{ post_yoba.author_name }} <b>{{ post_yoba.post_id }}</b>
-                    [<a href="reply?to={{ post_yoba.post_id }}">Reply</a>]
+                    [<a href="reply?to={{ post_yoba.post_id }}">{% if user.is_authenticated %}Reply{% else %}See Replies{% endif %}</a>]
                     <br>
                     <br>
                     <img src="{{ MEDIA_URL }}{{ post_yoba.image }}" alt="a"> {{ post_yoba.post_body }}
