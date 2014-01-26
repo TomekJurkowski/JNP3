@@ -11,25 +11,32 @@
             <td id="rightcolumn">
                  {% if user.is_authenticated %}
                 <form enctype="multipart/form-data" action="reply?to={{ param }}" method="POST">
-                    {% csrf_token %}
-                    <p id="text-to-center">
+                    <div class="control-group text-center">
+                        {% csrf_token %}
                     <input type="hidden" name="username" value="{{ user.username }}">
-                        Message:
-                        <br>
-                        {{ form.reply_body }}
-                        <br>
-                        {{ form.image }}
-                        <input type="submit" value="Submit"/>
-                    </p>
+
+                        <div class="form-group">
+                            Message: {{ form.reply_body }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.image }}
+                            <input class="btn-success btn-large" type="submit" value="Submit"/>
+                        </div>
+                    </div>
                 </form>
                 {% endif %}
                 <hr>
-               Name: <b>{{ p.post_subject }}</b> email: {{ p.author_name }} <b>№{{ p.post_id }}</b>
+                Subject: <b>{{ p.post_subject }}</b>
+                Author: <b>{{ p.author_name }}</b>
+                email: <b>{{ p.author_email }}</b>
+                Post ID: <b>{{ p.post_id }}</b>
                     <br>
                 <img src="{{ MEDIA_URL }}{{ p.image }}"> {{ p.post_body }}
                 <hr>
                 {% for reply_posts in r %}
-                    Name: <b>{{ reply_posts.reply_name }}</b> email: {{ reply_posts.reply_email }} Reply: <b>№{{ reply_posts.reply_id }}</b>
+                    Name: <b>{{ reply_posts.reply_name }}</b>
+                    email: <b>{{ reply_posts.reply_email }}</b>
+                    Reply ID: <b>{{ reply_posts.reply_id }}</b>
                     <br>
                     <img src="{{ MEDIA_URL }}{{ reply_posts.image }}"> {{ reply_posts.reply_body }}
                     <hr>

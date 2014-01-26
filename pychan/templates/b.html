@@ -9,25 +9,22 @@
                 <a href="/">/b/ - random</a>
             </td>
             <td id="rightcolumn">
-
-               {% if user.is_authenticated %}
+             {% if user.is_authenticated %}
                 <form class="form-horizontal" enctype="multipart/form-data" action="" method="POST">
                 <div class="control-group">
                     {% csrf_token %}
-                    <p id="text-to-center">
-                    <br>
                     <input type="hidden" name="username" value="{{ user.username }}">
-                    Subject:
-                     <br>
-                        {{ form.post_subject }}
-                    <br>
-                    Message:
-                    <br>
-                    {{ form.post_body }}
-                    <br>
-                    {{ form.image }}
-                    <input type="submit" value="Submit"/>
-                    </p>
+
+                    <div class="form-group">
+                        Subject: {{ form.post_subject }}
+                    </div>
+                    <div class="form-group">
+                        Message: {{ form.post_body }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.image }}
+                        <input class="btn-success btn-large" type="submit" value="Submit"/>
+                    </div>
                  </div>
                 </form>
 
