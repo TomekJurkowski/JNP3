@@ -3,6 +3,7 @@
 # Create your views here.
 
 from django.shortcuts import render_to_response
+import sys
 from engine.models import Post, Reply, GlobalId
 from engine.forms import PostForm, ReplyForm
 from django.template import RequestContext
@@ -14,7 +15,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def GetLastGet():
     global_id = GlobalId.objects.all().aggregate(Max('global_id'))
     if global_id['global_id__max'] is None:
-        return 1
+        return 0
     else:
         return global_id['global_id__max']
 
@@ -24,10 +25,7 @@ def ShowPostForm(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             g_id = GetLastGet()
-            if g_id == 1:
-                pass
-            else:
-                g_id += 1
+            g_id += 1
             author_name = form.cleaned_data['author_name']
             author_email = form.cleaned_data['author_email']
             post_subject = form.cleaned_data['post_subject']
