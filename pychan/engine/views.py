@@ -9,7 +9,12 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from django.db.models import Max
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from registration.models import User
+
+from django.contrib.auth.models import User
+from rest_framework import viewsets
+from serializers import UserSerializer, PostSerializer, ReplySerializer
+
+
 def GetLastGet():
     global_id = GlobalId.objects.all().aggregate(Max('global_id'))
     if global_id['global_id__max'] is None:
@@ -81,8 +86,32 @@ def ShowReplyForm(request):
         r = Reply.objects.filter(op_post_id=param)
         print r.first().image > ""
         return render_to_response('reply.html', {
-            'param' : param,
-            'form' : form,
-            'p' : p,
-            'r' : r,
+            'param': param,
+            'form': form,
+            'p': p,
+            'r': r,
         }, context_instance=RequestContext(request))
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class PostViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows posts to be viewed or edited.
+    """
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+
+class ReplyViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows replies to be viewed or edited.
+    """
+    queryset = Reply.objects.all()
+    serializer_class = ReplySerializer
