@@ -15,7 +15,7 @@
     </data-source>
     <data-source source="LOCAL" name="Django default" uuid="5d54e68f-bb2f-4823-a972-0e5e42a6f458">
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../../../../exceed/developing/python/pychan/db/database.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../../../exceed/developing/python/pychan/db/database.sqlite3</jdbc-url>
       <libraries>
         <library>
           <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/zentus-sqlite-license.txt</url>
@@ -27,7 +27,7 @@
     </data-source>
     <data-source source="LOCAL" name="Django default" uuid="8a66e323-e4c2-4f31-8961-22113d7636f3">
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../../../../exceed/developing/python/pychan/db/database.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../../../exceed/developing/python/pychan/db/database.sqlite3</jdbc-url>
       <libraries>
         <library>
           <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/zentus-sqlite-license.txt</url>
@@ -39,7 +39,7 @@
     </data-source>
     <data-source source="LOCAL" name="Django default" uuid="d86e3432-83e0-4f6a-84c1-a6fc502c5145">
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../../../../exceed/developing/python/pychan/db/database.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/../../../exceed/developing/python/pychan/db/database.sqlite3</jdbc-url>
       <libraries>
         <library>
           <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/zentus-sqlite-license.txt</url>

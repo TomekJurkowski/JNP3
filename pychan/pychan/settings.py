@@ -1,4 +1,5 @@
 # Django settings for pychan project.
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 

@@ -3,6 +3,7 @@
 # Create your views here.
 
 from django.shortcuts import render_to_response
+import sys
 from engine.models import Post, Reply, GlobalId
 from engine.forms import PostForm, ReplyForm
 from django.template import RequestContext
@@ -10,10 +11,11 @@ from django.http import HttpResponseRedirect
 from django.db.models import Max
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+
 def GetLastGet():
     global_id = GlobalId.objects.all().aggregate(Max('global_id'))
-    if global_id['global_id__max'] == None:
-        return 1
+    if global_id['global_id__max'] is None:
+        return 0
     else:
         return global_id['global_id__max']
 
@@ -23,19 +25,16 @@ def ShowPostForm(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             g_id = GetLastGet()
-            if g_id == 1:
-                pass
-            else:
-                g_id += 1
+            g_id += 1
             author_name = form.cleaned_data['author_name']
             author_email = form.cleaned_data['author_email']
             post_subject = form.cleaned_data['post_subject']
             post_body = form.cleaned_data['post_body']
             image = form.cleaned_data['image']
             p = Post(post_id=g_id, author_name=author_name, author_email=author_email, post_subject=post_subject,
-                post_body=post_body, image=image)
+                     post_body=post_body, image=image)
             p.save()
-            gid = GlobalId(global_id = g_id)
+            gid = GlobalId(global_id=g_id)
             gid.save()
             return HttpResponseRedirect('')
     else:
@@ -50,10 +49,11 @@ def ShowPostForm(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
     return render_to_response('b.html', {
-        'form' : form,
-        'post_list' : post_list,
-        'posts' : posts,
+        'form': form,
+        'post_list': post_list,
+        'posts': posts,
     }, context_instance=RequestContext(request))
+
 
 def ShowReplyForm(request):
     if request.method == 'POST':
@@ -69,10 +69,10 @@ def ShowReplyForm(request):
             reply_email = form.cleaned_data['reply_email']
             reply_body = form.cleaned_data['reply_body']
             image = form.cleaned_data['image']
-            p = Reply(reply_id=g_id, op_post_id = param, reply_name=reply_name, reply_email=reply_email,
-                reply_body=reply_body, image=image)
+            p = Reply(reply_id=g_id, op_post_id=param, reply_name=reply_name, reply_email=reply_email,
+                      reply_body=reply_body, image=image)
             p.save()
-            gid = GlobalId(global_id = g_id)
+            gid = GlobalId(global_id=g_id)
             gid.save()
             return HttpResponseRedirect('')
 
