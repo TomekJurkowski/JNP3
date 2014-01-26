@@ -1,6 +1,6 @@
 html, body {
-    background-color: #EEEEEE;
-    color: #333333;
+    background-color: #040404;
+    color: #51a351;
     font-family: "Trebuchet MS",Trebuchet,serif;
 }
 
@@ -34,9 +34,5 @@ td {
 }
 
 #rightcolumn {
-
-}
-
-#rules-to-center {
-    text-align: center;
+    
 }

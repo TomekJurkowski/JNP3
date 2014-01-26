@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% comment %}    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">{% endcomment %}
+
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+
+
+    <script src = "/static/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/jquery-ui.css" />
+    <script src="/static/jquery-ui.js"></script>
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src = "/static/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="/static/css/photon.css">
+
+    <title>MIMchan</title>
+
+
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+<div class="navbar">
+    <div class="navbar-inverse">
+        <div class="navbar-inner">
+            <div class="container">
+                <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <!-- Be sure to leave the brand out there if you want it shown -->
+                <a class="brand"  href="/">MIMchan</a>
+                <ul class="nav">
+                    <li>
+                        <a href="/b/">Random</a>
+                    </li>
+
+
+
+                </ul>
+                <!-- Everything you want hidden at 940px or less, place within here -->
+                <div class="nav-collapse collapse">
+                    <!-- .nav, .navbar-search, .navbar-form, etc -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% block content %}
+{% endblock %}
+</body>
+</html>

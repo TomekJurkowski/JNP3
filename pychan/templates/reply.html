@@ -1,13 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-        "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="/static/css/photon.css">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>MIMchan - /b/ - random</title>
-</head>
+{% extends "base.html" %}
+{% block content %}
 <body>
     <table width="100%" cellspacing="0" id="index-table">
         <tr>
@@ -20,11 +12,11 @@
                 <form enctype="multipart/form-data" action="reply?to={{ param }}" method="POST">
                     {% csrf_token %}
                     <p id="text-to-center">
-                        Имя: {{ form.reply_name }}
+                        Name: {{ form.reply_name }}
                         <br>
                         e-mail: {{ form.reply_email }}
                         <br>
-                        Сообщение:
+                        Message:
                         <br>
                         {{ form.reply_body }}
                         <br>
@@ -38,7 +30,7 @@
                 <img src="{{ MEDIA_URL }}{{ p.image }}"> {{ p.post_body }}
                 <hr>
                 {% for reply_posts in r %}
-                    Имя: <b>{{ reply_posts.reply_name }}</b> email: {{ reply_posts.reply_email }} Ответ: <b>№{{ reply_posts.reply_id }}</b>
+                    Name: <b>{{ reply_posts.reply_name }}</b> email: {{ reply_posts.reply_email }} Reply: <b>№{{ reply_posts.reply_id }}</b>
                     <br>
                     <img src="{{ MEDIA_URL }}{{ reply_posts.image }}"> {{ reply_posts.reply_body }}
                     <hr>
@@ -47,4 +39,4 @@
         </tr>
     </table>
 </body>
-</html>
+{% endblock %}
