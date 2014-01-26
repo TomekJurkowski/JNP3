@@ -35,7 +35,7 @@
                 <img src="{{ MEDIA_URL }}{{ p.image }}"> {{ p.post_body }}
                 <hr>
                 {% for reply_posts in r %}
-                    Name: <b>{{ reply_posts.reply_name }}</b>
+                    Author: <b>{{ reply_posts.reply_name }}</b>
                     email: <b>{{ reply_posts.reply_email }}</b>
                     Reply ID: <b>{{ reply_posts.reply_id }}</b>
                     <br>

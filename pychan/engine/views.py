@@ -45,7 +45,7 @@ def ShowPostForm(request):
             return HttpResponseRedirect('')
     else:
         form = PostForm()
-    post_list = Post.objects.all()
+    post_list = Post.objects.all().order_by('post_id')
     paginator = Paginator(post_list.reverse(), 5)
     page = request.GET.get('page')
     try:
@@ -84,7 +84,7 @@ def ShowReplyForm(request):
         form = ReplyForm
         param = request.GET.get('to', '')
         p = Post.objects.get(post_id=param)
-        r = Reply.objects.filter(op_post_id=param)
+        r = Reply.objects.filter(op_post_id=param).order_by('-reply_id')
         return render_to_response('reply.html', {
             'param': param,
             'form': form,
