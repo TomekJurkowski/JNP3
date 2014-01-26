@@ -1,0 +1,42 @@
+html, body {
+    background-color: #EEEEEE;
+    color: #333333;
+    font-family: "Trebuchet MS",Trebuchet,serif;
+}
+
+a {
+    color: #FF6600;
+}
+
+a:hover {
+    color: #0066FF;
+}
+
+#logo-center {
+    text-align: center;
+    font-size: 250%;
+}
+#text-to-center {
+    text-align: center;
+}
+
+#index-table {
+    width: 100%;
+}
+
+td {
+    vertical-align: top;
+    padding: 5px;
+}
+#leftcolumn {
+    width: 100px;
+    border-right: 1px dashed #000;
+}
+
+#rightcolumn {
+
+}
+
+#rules-to-center {
+    text-align: center;
+}

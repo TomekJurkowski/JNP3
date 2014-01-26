@@ -30,7 +30,7 @@
         <!-- Albums  -->
         <ul>
             {% for album in albums.object_list %}
-                <div class="title"><a href="{% url photo.views.album album.pk %}">{{ album.title }}</a>
+                <div class="title"><a href="blabbla">{{ album.title }}</a>
                     ({{ album.image_set.count }} images)</div>
                 <ul>
                     {% for img in album.images %}

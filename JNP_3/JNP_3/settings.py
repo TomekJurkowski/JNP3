@@ -77,11 +77,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/home/tomasz/PycharmProjects/JNP_3/PhotoOrganizer/media/'
+MEDIA_ROOT = "PhotoOrganizer/media/"
 MEDIA_URL = 'http://127.0.0.1:8000/media/'

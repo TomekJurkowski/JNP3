@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Django default" product="" version="" jdbc-version="" driver-version="" uuid="e4628578-9638-45ef-8614-e6aa53b77df7">
+    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+    <jdbc-url>jdbc:sqlite:/home/exceed/developing/python/pychan/db/database.sqlite3</jdbc-url>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/zentus-sqlite-license.txt</url>
+      </library>
+      <library>
+        <url>jar://$USER_HOME$/.PyCharm20/config/jdbc-drivers/sqlitejdbc-v056.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+  <data-source source="LOCAL" name="Django default" product="" version="" jdbc-version="" driver-version="" uuid="5d54e68f-bb2f-4823-a972-0e5e42a6f458">
+    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+    <jdbc-url>jdbc:sqlite:/home/exceed/developing/python/pychan/db/database.sqlite3</jdbc-url>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/zentus-sqlite-license.txt</url>
+      </library>
+      <library>
+        <url>jar://$USER_HOME$/.PyCharm20/config/jdbc-drivers/sqlitejdbc-v056.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+  <data-source source="LOCAL" name="Django default" product="" version="" jdbc-version="" driver-version="" uuid="8a66e323-e4c2-4f31-8961-22113d7636f3">
+    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+    <jdbc-url>jdbc:sqlite:/home/exceed/developing/python/pychan/db/database.sqlite3</jdbc-url>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/zentus-sqlite-license.txt</url>
+      </library>
+      <library>
+        <url>jar://$USER_HOME$/.PyCharm20/config/jdbc-drivers/sqlitejdbc-v056.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+  <data-source source="LOCAL" name="Django default" product="" version="" jdbc-version="" driver-version="" uuid="d86e3432-83e0-4f6a-84c1-a6fc502c5145">
+    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+    <jdbc-url>jdbc:sqlite:/home/exceed/developing/python/pychan/db/database.sqlite3</jdbc-url>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm20/config/jdbc-drivers/zentus-sqlite-license.txt</url>
+      </library>
+      <library>
+        <url>jar://$USER_HOME$/.PyCharm20/config/jdbc-drivers/sqlitejdbc-v056.jar!/</url>
+      </library>
+    </libraries>
+  </data-source>
+</component>
