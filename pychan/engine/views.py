@@ -3,7 +3,6 @@
 # Create your views here.
 
 from django.shortcuts import render_to_response
-import sys
 from engine.models import Post, Reply, GlobalId
 from engine.forms import PostForm, ReplyForm
 from django.template import RequestContext
@@ -61,10 +60,7 @@ def ShowReplyForm(request):
         param = request.GET.get('to', '')
         if form.is_valid():
             g_id = GetLastGet()
-            if g_id == 1:
-                pass
-            else:
-                g_id += 1
+            g_id += 1
             reply_name = form.cleaned_data['reply_name']
             reply_email = form.cleaned_data['reply_email']
             reply_body = form.cleaned_data['reply_body']
