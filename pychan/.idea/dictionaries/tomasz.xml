@@ -1,6 +1,11 @@
 <component name="ProjectDictionaryState">
   <dictionary name="tomasz">
     <words>
+      <w>amqp</w>
+      <w>backends</w>
+      <w>csrf</w>
+      <w>mimchan</w>
+      <w>poczta</w>
       <w>sqlite</w>
     </words>
   </dictionary>

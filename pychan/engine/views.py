@@ -14,6 +14,8 @@ from django.contrib.auth.models import User
 from rest_framework import viewsets
 from serializers import UserSerializer, PostSerializer, ReplySerializer
 
+from engine.tasks import mul, add_post, add_reply
+
 
 def GetLastGet():
     global_id = GlobalId.objects.all().aggregate(Max('global_id'))
@@ -26,9 +28,7 @@ def GetLastGet():
 def ShowPostForm(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
-        print "dup0a"
         if form.is_valid():
-            print "dupa"
             g_id = GetLastGet()
             g_id += 1
             username = request.POST["username"]
@@ -37,14 +37,22 @@ def ShowPostForm(request):
             post_subject = form.cleaned_data['post_subject']
             post_body = form.cleaned_data['post_body']
             image = form.cleaned_data['image']
+
             p = Post(post_id=g_id, author_name=author_name, author_email=author_email, post_subject=post_subject,
-                      post_body=post_body, image=image)
+                     post_body=post_body, image=image)
             p.save()
             gid = GlobalId(global_id=g_id)
             gid.save()
+            # ret = add_post.delay(g_id, author_name, author_email, post_subject, post_body, image)
+            print "async add_post\n"
+            print ret.get()
             return HttpResponseRedirect('')
     else:
         form = PostForm()
+    print "trolololo\n"
+    x = mul.apply_async((2, 2))
+
+    print x.get()
     post_list = Post.objects.all().order_by('post_id')
     paginator = Paginator(post_list.reverse(), 5)
     page = request.GET.get('page')
@@ -73,11 +81,15 @@ def ShowReplyForm(request):
             reply_email = User.objects.get(username=username).email
             reply_body = form.cleaned_data['reply_body']
             image = form.cleaned_data['image']
+
             p = Reply(reply_id=g_id, op_post_id=param, reply_name=reply_name, reply_email=reply_email,
                       reply_body=reply_body, image=image)
             p.save()
             gid = GlobalId(global_id=g_id)
             gid.save()
+            # ret = add_reply.delay(g_id, param, reply_name, reply_email, reply_body, image)
+            print "async add_reply\n"
+            print ret.get()
             return HttpResponseRedirect('')
 
     if request.method == 'GET':
