@@ -2,17 +2,17 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
+import os
 ADMINS = (
     # ('admin', 'admin@admin.com'),
 )
-
+BASE_DIR = '/home/JNP3/pychan/'
 MANAGERS = ADMINS
-
+SOCIAL_AUTH_SANITIZE_REDIRECTS = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'db/database.sqlite3',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(BASE_DIR, 'database.db'),                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -152,6 +152,7 @@ INSTALLED_APPS = (
     'registration', # django-registration
     'social.apps.django_app.default',  # python-social-auth
     'rest_framework',
+    'gunicorn',
 )
 ACCOUNT_ACTIVATION_DAYS = 30
 LOGIN_REDIRECT_URL = '/'

@@ -13,7 +13,7 @@ class Post(models.Model):
     author_name = models.CharField(max_length=32)
     author_email = models.EmailField(max_length=128)
     post_subject = models.CharField(max_length=64)
-    post_body = models.TextField(max_length=2048)
+    post_body = models.TextField(max_length=2048, blank=True)
     image = models.ImageField(upload_to=upload_to('thread/', 'post_id'), blank=True)
 
 

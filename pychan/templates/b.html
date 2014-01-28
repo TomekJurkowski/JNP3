@@ -1,69 +1,88 @@
 {% extends "base.html" %}
 {% block content %}
 <body>
-    <table width="100%" cellspacing="0" id="index-table">
-        <tr>
-            <td id="leftcolumn">
-                Boards:
-                <br>
-                <a href="/">/b/ - random</a>
-            </td>
-            <td id="rightcolumn">
+    <div class="container img-rounded" style="background-color:#000000; width: 800px; margin: 0 auto;" >
              {% if user.is_authenticated %}
-                <form class="form-horizontal" enctype="multipart/form-data" action="" method="POST">
-                <div class="control-group">
+
+
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" style="background-color:#36363a" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <form class="form-inline" style="text-align: center"  enctype="multipart/form-data" action="" method="POST">
+       <div class="form-group">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <h3 id="myModalLabel">Add Post</h3>
+  </div>
+  <div class="modal-body" style="background-color:#36363a">
+  
+
+
                     {% csrf_token %}
                     <input type="hidden" name="username" value="{{ user.username }}">
 
                     <div class="form-group">
-                        Subject:<br> {{ form.post_subject }}
+                         {{ form.post_subject }}
                     </div>
                     <div class="form-group">
-                        Message:<br> {{ form.post_body }}
+                         {{ form.post_body }}
                     </div>
                     <div class="form-group">
-                        {{ form.image }}<br>
-                        <input class="btn-success" type="submit" value="Submit"/>
+                        {{ form.image }}
                     </div>
+
+</div>
+  <div class="modal-footer"  style="background-color:#36363a">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button class="btn btn-primary">Submit</button>
+  </div>
                  </div>
                 </form>
+</div>
 
-            {% endif %}
-                <hr>
-                <div id="rules-to-center" align=”center”>
-                    <b>Rules</b>
+
+
+            {% endif %}<br>
+                 <div class=" img-rounded container" style=" width: 800px; background-color:#000000" align="center">    
+<br>		<b>Rules</b>
                     <ul>
-                        <li>Post your cute cats</li>
+                        Post your cute cats
                     </ul>
-                </div>
-                <hr>
-                {% for post_yoba in posts %}
-                    <b>{{ post_yoba.post_subject }}</b> {{ post_yoba.author_name }} <b>{{ post_yoba.post_id }}</b>
+<br>
+                </div><br>
+                <div class=" img-rounded container" style=" width: 800px; background-color:#000000">
+		    <br><br>{% for post_yoba in posts %}
+			<div class="container img-rounded" style="text-align: center;     width: auto; margin-left: 50px; margin-right: 50px;  background-color:#36363a">		
+	<b>{{ post_yoba.post_subject }}</b> {{ post_yoba.author_name }} <b>{{ post_yoba.post_id }}</b>
                     [<a href="reply?to={{ post_yoba.post_id }}">{% if user.is_authenticated %}Reply{% else %}See Replies{% endif %}</a>]
                     <br>
                     <br>
-                    <img src="{{ MEDIA_URL }}{{ post_yoba.image }}" alt="a"> {{ post_yoba.post_body }}
+                    <img src="{{ MEDIA_URL }}{{ post_yoba.image }}" alt="a" class="img-rounded img-responsive" style="max-width: 70%"> <br>{{ post_yoba.post_body }}
                     <br>
-                    <hr>
                     <br>
+			</div><br>
                 {% endfor %}
-            </td>
-        </tr>
-    </table>
-    <div class="pagination">
-    <span class="step-links">
+<div style="margin-right:10%; width: auto; margin-left: 10%">
+<ul class="pager">
         {% if posts.has_previous %}
-            <a href="?page={{ posts.previous_page_number }}">Previous</a>
-        {% endif %}
+            <li class="previous"><a href="?page={{ posts.previous_page_number }}">Previous</a></li>
+        {% else %}
+	     <li class="previous disabled"><a>Previous</a></li>
+	{% endif %}
 
         <span class="current">
             Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
         </span>
 
         {% if posts.has_next %}
-            <a href="?page={{ posts.next_page_number }}">Next</a>
-        {% endif %}
-    </span>
-    </div>
+            <li class="next"><a href="?page={{ posts.next_page_number }}">Next</a></li>
+        {%else%}
+	     <li class="next disabled"><a>Next</a></li>
+
+	{% endif %}
+</ul>
+</div>    
+</div>
+</div>
 </body>
 {% endblock %}

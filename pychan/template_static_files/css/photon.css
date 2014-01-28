@@ -1,8 +1,20 @@
 html, body {
-    background-color: #040404;
-    color: #51a351;
+    background-color: #36363a;
+    color: #ffffff;
     font-family: "Trebuchet MS",Trebuchet,serif;
 }
+
+.modal-header {
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #36363a;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+ }
 
 a {
     color: #FF6600;
@@ -21,7 +33,7 @@ a:hover {
 }
 
 #index-table {
-    width: 100%;
+    width: 500%;
 }
 
 td {
@@ -29,8 +41,6 @@ td {
     padding: 5px;
 }
 #leftcolumn {
-    width: 100px;
-    border-right: 1px dashed #000;
 }
 
 #rightcolumn {

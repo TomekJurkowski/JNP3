@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
-{% comment %}    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">{% endcomment %}
+   <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
 
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
 
@@ -12,8 +13,8 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/static/css/photon.css">
-
+<link rel="stylesheet" type="text/css" href="/static/css/photon.css">
+    <>
     <title>MIMchan</title>
 
 
@@ -21,17 +22,18 @@
     {% endblock %}
 </head>
 
-<body>
+<body><div>
+<header class="navbar navbar-inverse navbar-fixed-top bs-docs-nav"  role="banner">
 <div class="navbar">
     <div class="navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container">
+        <div class="navbar-inner navbar-center">
+            <div class=" center-block container">
                 <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+		    <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
+		</a>
                 <!-- Be sure to leave the brand out there if you want it shown -->
                 <a class="brand"  href="/">MIMchan</a>
 
@@ -56,9 +58,9 @@
                                 <a href="/accounts/logout/">Wyloguj się</a>
                             </li>
                             <li>
-                                <a href="{% url 'auth_password_change' %}">Zmień hasło</a>
-                            </li>
-                        {% else %}
+			<a href="#myModal" role="button" class="button" data-toggle="modal">Add Post</a>			   
+</li>
+			{% else %}
                             <li>
                             <a href="/accounts/login/">Zaloguj się</a>
                             </li>
@@ -75,6 +77,9 @@
         </div>
     </div>
 </div>
+</header>
+</div>
+<br><br>
 {% block content %}
 {% endblock %}
 </body>

@@ -16,7 +16,7 @@ router.register(r'replies', views.ReplyViewSet)
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'pychan.views.home', name='home'),
+    url(r'^$', 'engine.views.ShowPostForm', name='ShowPostForm'),
     # url(r'^pychan/', include('pychan.foo.urls')),
     url(r'^b/$', 'engine.views.ShowPostForm', name='ShowPostForm'),
     url(r'reply$', 'engine.views.ShowReplyForm', name='ShowReplyForm'),
